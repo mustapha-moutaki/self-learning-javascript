@@ -1,3 +1,5 @@
+### challenges-with-solutions
+
 ## Single-Function Challenges (Use One Function)
 
 1. **Challenge: Reverse an Array**
