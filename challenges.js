@@ -1640,7 +1640,6 @@ const employees = [
             
         let getMostCommonSkill =(arr) =>{
         let skills =[];
-        let count = 0;
         for(let i  =0; i < arr.length; i++){
         let indexarr = arr[i];
         for(let j =0; j <indexarr.skills.length; j++){
@@ -1651,7 +1650,7 @@ const employees = [
         // here i got all skills in array
         let obj = {};
 
-        for(let x = 0; x < skills.length; x++){
+        for(let x = 0; x <  .length; x++){
             if(obj[skills[x]]){
             obj[skills[x]]++;
             }else{
@@ -1679,4 +1678,167 @@ const employees = [
         }
         getMostCommonSkill(employees)
     ```
+
+17. **Challenge: Find the Most Common Skill Among All Employees**
+    - **Functions**: `getMostCommonSkill`
+    - **Input**: `employees`
+    - **Output**: `"JavaScript"`
+    - **Solution**: 
+    ```javascript
+    // Implementation of the function to find the most common skill
+    function getMostCommonSkill(employees) {
+        const skillCount = {};
+        employees.forEach(employee => {
+            employee.skills.forEach(skill => {
+                skillCount[skill] = (skillCount[skill] || 0) + 1;
+            });
+        });
+        return Object.keys(skillCount).reduce((a, b) => skillCount[a] > skillCount[b] ? a : b);
+    }
+    ```
+
+18. **Challenge: List Employees with a Salary Above 60000**
+    - **Functions**: `getHighEarningEmployees`
+    - **Input**: `employees, 60000`
+    - **Output**: `[ { id: 3, firstName: "Pierre", ... }, { id: 8, firstName: "Nicolas", ... }, ... ]`
+    - **Solution**: 
+    ```javascript
+    // Implementation of the function to filter high-earning employees
+    function getHighEarningEmployees(employees, salaryThreshold) {
+        return employees.filter(employee => employee.salary > salaryThreshold);
+    }
+    ```
+
+19. **Challenge: Find the Longest-Serving Employee**
+    - **Functions**: `getLongestServingEmployee`
+    - **Input**: `employees`
+    - **Output**: `{ id: 34, firstName: "Paul", ... }`
+    - **Solution**: 
+    ```javascript
+    
+        let getLongestServingEmployee = (arr)=>{
+        let logestserving = arr[0].joinDate;
+        let newarr = [];
+
+        for(let i =0; i < arr.length; i++){
+            if(newarr.length <= 3){
+            if(arr[i].joinDate > logestserving){
+                logestserving =  arr[i];
+            }
+            }
+        }
+        // console.log(logestserving)
+        }
+        getLongestServingEmployee(employees);
+    ```
+
+20. **Challenge: Count How Many Employees Are in Each Department**
+    - **Functions**: `countEmployeesByDepartment`
+    - **Input**: `employees`
+    - **Output**: `{ "Développement": 15, "Design": 10, "Marketing": 12, "Management": 13 }`
+    - **Solution**: 
+    ```javascript
+    let countEmployeesByDepartment = (arr) => {
+  let obj = {}; 
+  
+        for(let i =0; i < arr.length; i++){
+        let dep =  arr[i].department;
+        if(obj[dep]){
+            obj[dep]++;
+        }else{
+            obj[dep] =1;
+        }
+        }
+
+        };
+
+        countEmployeesByDepartment(employees);
+    ```
+
+21. **Challenge: Find the Department with the Most Employees**
+    - **Functions**: `getLargestDepartment`
+    - **Input**: `employees`
+    - **Output**: `"Développement"`
+    - **Solution**: 
+    ```javascript
+    let getLargestDepartment = (arr) =>{
+  let obj = {};
+  
+  for(let i =0; i < arr.length; i++){
+    let count = arr[i].department;
+    if(obj[count]){
+      obj[count]++
+    }else{
+      obj[count]= 1;
+    }
+  }
+  let max =0;
+  let newkey = '';
+  for(let key in obj){
+    let value= obj[key];
+    if(value> max){
+      max =value;
+      newkey = key
+    }
+  }
+   console.log(newkey ,max)
+    }
+    getLargestDepartment(employees);
+    ```
+
+22. **Challenge: Calculate the Total Salary Expenditure per Department**
+    - **Functions**: `calculateTotalSalaryByDepartment`
+    - **Input**: `employees`
+    - **Output**: `{ "Développement": 750000, "Design": 450000, "Marketing": 600000, "Management": 800000 }`
+    - **Solution**: 
+    ```javascript
+    let calculateTotalSalaryByDepartment = (arr)=>{
+  let obj = {};
+  
+  for(let i = 0; i <arr.length; i++){
+    let inst = arr[i].department
+    let salary = arr[i].salary
+    if(obj[inst]){
+      obj[inst] += salary;
+    }else{
+      obj[inst] = salary;
+        }
+    }
+    console.log(obj)
+    }
+    calculateTotalSalaryByDepartment(employees)
+    ```
+
+23. **Challenge: List All Positions in the "Marketing" Department**
+    - **Functions**: `getPositionsInDepartment`
+    - **Input**: `employees, "Marketing"`
+    - **Output**: `["Responsable SEO", "Chargée de communication", "Responsable marketing digital", ...]`
+    - **Solution**: 
+    ```javascript
+    let getPositionsInDepartment =(arr, department) =>{
+  let newArr = [];
+  for(let i =0; i < arr.length; i++){
+    if(arr[i].department == department){
+      newArr.push(arr[i].position);
+    }
+    
+  }
+    console.log(newArr);
+    }
+
+    getPositionsInDepartment(employees, 'Marketing');
+    ``` 
+
+24. **Challenge: Find the Average Number of Projects per Employee by Department**
+    - **Functions**: `calculateAverageProjectsByDepartment`
+    - **Input**: `employees`
+    - **Output**: `...`
+    - **Solution**: 
+    ```javascript
+    let calculateAverageProjectsByDepartment = (arr) => {
+        // not yet guys
+    };
+    ```
+
+ 
 
